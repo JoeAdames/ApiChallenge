@@ -1,11 +1,14 @@
+import { Routes, Route, Navigate } from 'react-router-dom'; 
+import Login from './pages/LoginPage';
+import Search from './pages/SearchPage';
 
 
 function App() {
-
   return (
-    <>
-     <h1>Hello</h1>
-    </>
+      <Routes>
+            <Route path='/' element={<Login />}  />
+            <Route path='/search' element={<Search />}  />
+      </Routes>
   )
 }
 
