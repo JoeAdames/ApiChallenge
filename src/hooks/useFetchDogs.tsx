@@ -5,8 +5,12 @@ import DogResponse from '../interfaces/DogResponse';
 import FetchDogsProps from '../interfaces/FetchDogsProps';
 
 export const useFetchDogs = (params: FetchDogsProps) => {
-  // ✅ Fetch Dog IDs
-  const { data: dogIdData, isLoading: isDogIdLoading, isError: isDogIdError, error: dogIdError } = useQuery<DogSearchResponse>({
+  const { 
+    data: dogIdData, 
+    isLoading: isDogIdLoading, 
+    isError: isDogIdError, 
+    error: dogIdError 
+  } = useQuery<DogSearchResponse>({
     queryKey: ['dogIds', params],
     queryFn: () => fetchDogIds(params),
     placeholderData: { resultIds: [], total: 0 },
@@ -16,7 +20,12 @@ export const useFetchDogs = (params: FetchDogsProps) => {
 
   const dogIds = dogIdData?.resultIds ?? [];
 
-  const { data: dogObjects, isLoading: isDogsLoading, isError: isDogsError, error: dogsError } = useQuery<DogResponse[]>({
+  const { 
+    data: dogObjects, 
+    isLoading: isDogsLoading, 
+    isError: isDogsError, 
+    error: dogsError 
+  } = useQuery<DogResponse[]>({
       queryKey: ['dogs', dogIds], 
       queryFn: async () => {
         if (dogIds.length === 0) return [];
@@ -24,14 +33,14 @@ export const useFetchDogs = (params: FetchDogsProps) => {
       },
       enabled: dogIds.length > 0,
     });
-    
+
   return {
-    dogs: dogObjects ?? [], // ✅ Ensures it's always an array
+    dogs: dogObjects ?? [],
     isLoading: isDogIdLoading || isDogsLoading,
     isError: isDogIdError || isDogsError,
     error: dogIdError || dogsError,
     total: dogIdData?.total || 0,
-    next: dogIdData?.next,
-    prev: dogIdData?.prev,
+    next: dogIdData?.next, //throws errors
+    prev: dogIdData?.prev, // throws errors
   };
 };

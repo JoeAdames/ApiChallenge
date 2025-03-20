@@ -2,8 +2,7 @@ import  apiClient  from './axiosInstance'
 import DogSearchResponse from '../interfaces/DogSearchResponse'
 import FetchDogsProps from '../interfaces/FetchDogsProps'
 import DogResponse from '../interfaces/DogResponse';
-
-
+import BreedResponse from '../interfaces/BreedResponse';
 
 export const fetchDogIds= async (params: FetchDogsProps): Promise<DogSearchResponse> => {
     const response = await apiClient.get<DogSearchResponse>(`/dogs/search`, { params });
@@ -18,3 +17,13 @@ export const fetchDogsByIds = async (params: DogSearchResponse): Promise< DogRes
       const response = await apiClient.post<DogResponse[]>(`/dogs`, dogIds );
       return response.data ?? []
 }
+
+//getbreeds
+export const fetchBreeds = async (): Promise< BreedResponse[] > => {
+    const response = await apiClient.get('/dogs/breeds');
+    return response.data;
+}
+
+//matchdogsbyid method  
+
+//getlocations
