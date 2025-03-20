@@ -18,7 +18,6 @@ export const fetchDogsByIds = async (params: DogSearchResponse): Promise< DogRes
       return response.data ?? []
 }
 
-//getbreeds
 export const fetchBreeds = async (): Promise< BreedResponse[] > => {
     const response = await apiClient.get('/dogs/breeds');
     return response.data;
