@@ -1,3 +1,3 @@
 export default interface BreedResponse {
-    breeds: string [];
+    breeds: string[];
 }
