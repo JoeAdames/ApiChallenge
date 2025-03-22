@@ -1,8 +1,8 @@
 import { useQuery } from '@tanstack/react-query';
 import { fetchDogIds, fetchDogsByIds } from '../api/dogs';
-import DogSearchResponse from '../interfaces/DogSearchResponse';
-import DogResponse from '../interfaces/DogResponse';
-import FetchDogsProps from '../interfaces/FetchDogsProps';
+import DogSearchResponse from '../interfaces/dog/DogSearchResponse';
+import DogResponse from '../interfaces/dog/DogResponse';
+import FetchDogsProps from '../interfaces/dog/FetchDogsProps';
 
 export const useFetchDogs = (params: FetchDogsProps) => {
   const { 

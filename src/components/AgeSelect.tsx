@@ -1,4 +1,4 @@
-import AgeProps from "@/interfaces/AgeProps";
+import AgeProps from "@/interfaces/age/AgeProps";
 import {
   Select,
   SelectContent,

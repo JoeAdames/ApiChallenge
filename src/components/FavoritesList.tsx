@@ -5,15 +5,12 @@ import { useGenerateMatch } from "@/hooks/useGenerateMatch";
 
 export default function FavoritesList(){
     const {favorites, removeFavorite} = useFavoriteStore();
-    const [ match, setMatch ] = useState<string |  undefined>();
+    const [ match, setMatch ] = useState<string[] |  undefined>();
     const { mutate, data, isError, error } = useGenerateMatch();
-    const mutateIds: string[] = [];
     const handleMutate = () => {
-      favorites.forEach(item => {
-        mutateIds.push(item.id);
-      })
-      mutate(favorites);
-      setMatch(data?.match)
+     const mutateIds = favorites.map(dog => dog.id);
+     mutate({favoriteDogIds: mutateIds});
+     setMatch(data?.match)
     }
     if (isError) return <p>Error loading Match: {error?.message}</p>;
   return (

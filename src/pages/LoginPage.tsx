@@ -13,11 +13,11 @@ export default function Login() {
 
     const handleLogin = async () => {
         try {
-            const data = await loginUser(name, email);
+            loginUser(name, email);
             login(name, email);
             navigate('/search');
         } catch {
-            alert('Login Failed!');
+            alert('Login Failed!',);
         }
     }
 

@@ -1,5 +1,5 @@
 import { useFetchBreeds } from '../hooks/useFetchBreeds';
-import BreedListProps from '../interfaces/BreedListProps'
+import BreedListProps from '../interfaces/breed/BreedListProps'
 import {
   Select,
   SelectContent,
@@ -15,7 +15,7 @@ export default function BreedList({ selectedBreed, onSelectBreed}: BreedListProp
   if (isLoading) return <p>Loading breeds...</p>;
   if (isError) return <p>Error loading breeds: {error?.message}</p>;
 
-  
+  console.log(breeds)
 
   return (
     <div className="">

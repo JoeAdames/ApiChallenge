@@ -1,6 +1,6 @@
 import { useQuery } from '@tanstack/react-query';
 import { fetchBreeds } from '../api/dogs'; 
-import BreedResponse from '../interfaces/BreedResponse';
+import { BreedResponse } from '../interfaces/breed/BreedResponse';
 
 export const useFetchBreeds = () => {
     const {

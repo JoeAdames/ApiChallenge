@@ -1,9 +1,9 @@
 import { create } from 'zustand';
-import FavoriteStore from '../interfaces/FavotiresStore';
+import FavoriteStore from '../interfaces/favorites/FavotiresStore';
 
 export const useFavoriteStore = create<FavoriteStore>((set) => ({
     favorites: [],
-  
+
     addFavorite: (dog) =>
       set((state) => ({ favorites: [...state.favorites, dog] })),
   
@@ -13,7 +13,7 @@ export const useFavoriteStore = create<FavoriteStore>((set) => ({
     toggleFavorite: (dog) =>
       set((state) =>
         state.favorites.some((favDog) => favDog.id === dog.id)
-          ? { favorites: state.favorites.filter((favDog) => favDog.id !== dog.id) } // ❌ Remove
-          : { favorites: [...state.favorites, dog] } // ✅ Add
+          ? { favorites: state.favorites.filter((favDog) => favDog.id !== dog.id) }
+          : { favorites: [...state.favorites, dog] }
       ),
   }));

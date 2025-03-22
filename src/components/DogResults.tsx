@@ -8,7 +8,7 @@ import {
   CardFooter
 } from "@/components/ui/card"
 import { Checkbox } from "@/components/ui/checkbox"
-import DogResultsProps from "../interfaces/DogResultsProps"
+import DogResultsProps from "../interfaces/dog/DogResultsProps"
 import { useFavoriteStore } from "@/store/favoritesStore";
 
 export function DogResults({dogs}: DogResultsProps) {
@@ -19,26 +19,25 @@ export function DogResults({dogs}: DogResultsProps) {
         {dogs.length > 0 ? (
           dogs.map((dog) => (
             <Card key={dog.id} className="bg-neutral-700 text-neutral-200" > 
-                <CardContent>
-                    <CardHeader>
-                            <CardTitle>{dog.name}</CardTitle>
-                    </CardHeader>
-                    <img src={dog.img} alt={dog.name} className="w-full h-40 object-center rounded" />
+                <CardHeader className="flex flex-row justify-between">
+                        <CardTitle>{dog.name}</CardTitle>
+                        <CardTitle className="text-neutral-200">Age: {dog.age}</CardTitle>
+                  </CardHeader>
+                  <CardContent className="grid ">
+                    <img src={dog.img} alt={dog.name} className="w-full h-40 object-center rounded-2xl" />
                     <CardDescription className="my-2">
-                        <p>Age: {dog.age}</p>
-                        <p>Location: {dog.zip_code}</p>
                     </CardDescription>
-                    <CardHeader>
+              </CardContent>
+              <CardFooter className="flex flex-row justify-between">
                         <CardTitle> {dog.breed}</CardTitle>
-                    </CardHeader>
+                        <div>
+                    <label>Favorite</label>
                     <Checkbox
                     checked={favorites.some((favDog) => favDog.id === dog.id)}
                     onCheckedChange={() => toggleFavorite(dog)}
                     className="mx-2"
                     />
-                    <label>Favorite</label>
-              </CardContent>
-              <CardFooter>
+                    </div>
               </CardFooter>
             </Card>
           ))
@@ -46,20 +45,4 @@ export function DogResults({dogs}: DogResultsProps) {
           <p className="col-span-3 text-center mt-4">No dogs found for the selected breed.</p>
         )}
       </div>
-
-
-
-    // <Card className="w-[350px]">
-    //   <CardHeader>
-    //     <CardTitle>Create project</CardTitle>
-    //     <CardDescription>Deploy your new project in one-click.</CardDescription>
-    //   </CardHeader>
-    //   <CardContent>
-            
-    //   </CardContent>
-    //   <CardFooter className="flex justify-between">
-    //     <Button variant="outline">Cancel</Button>
-    //     <Button>Deploy</Button>
-    //   </CardFooter>
-    // </Card>
   )}
