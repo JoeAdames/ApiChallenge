@@ -1,16 +1,32 @@
-Project overview
-Dog search app
-Search types: breed, name, age(range) : asc | desc
-Browse paginated results of dogs
-Selectable breeds from a dropdownlist filtering results
+# Dog Search App
 
-Stack
-React + Typescript
-Zustand for state
-TanStackQuery for Data fetching
-Axios for api calls
+## Development
 
-Endpoints
-Get /dog/breeds returns list of breeds
-Get /dogs/search returns dog Ids
-Post /dogs returns dog objects
+server: npm run dev
+
+## 🔎 Search Functionality
+
+- Search by: **Breed, Name, Age (Range)**
+- Sort results: **Ascending | Descending**
+- Browse **paginated** results of dogs
+- Select breeds from a **dropdown** to filter results
+
+## 🛠 Tech Stack
+
+- **React + TypeScript**
+- **Zustand** for state management
+- **TanStack Query** for data fetching
+- **Axios** for API calls
+
+## 🌐 API Endpoints
+
+| Method | Endpoint       | Description              |
+| ------ | -------------- | ------------------------ |
+| `GET`  | `/dogs/breeds` | Returns a list of breeds |
+| `GET`  | `/dogs/search` | Returns dog IDs          |
+| `POST` | `/dogs`        | Returns dog objects      |
+| `POST` | `/dogs/match`  | Returns dog objects      |
+
+```
+
+```
