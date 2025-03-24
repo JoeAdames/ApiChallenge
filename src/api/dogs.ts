@@ -2,7 +2,6 @@ import  apiClient  from './axiosInstance'
 import DogSearchResponse from '../interfaces/dog/DogSearchResponse'
 import FetchDogsProps from '../interfaces/dog/FetchDogsProps'
 import DogResponse from '../interfaces/dog/DogResponse';
-import BreedResponse from '../interfaces/breed/BreedResponse';
 import MatchResponse from '@/interfaces/match/MatchResponse';
 import MatchProps from '@/interfaces/match/MatchProps';
 
@@ -20,8 +19,8 @@ export const fetchDogsByIds = async (params: DogSearchResponse): Promise< DogRes
       return response.data ?? []
 }
 
-export const fetchBreeds = async (): Promise< BreedResponse > => {
-    const response = await apiClient.get< BreedResponse >('/dogs/breeds');
+export const fetchBreeds = async (): Promise< string[] > => {
+    const response = await apiClient.get< string[] >('/dogs/breeds');
     return response.data;
 }
 

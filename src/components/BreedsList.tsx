@@ -10,12 +10,13 @@ import {
 } from "@/components/ui/select"
 
 export default function BreedList({ selectedBreed, onSelectBreed}: BreedListProps) {
-  const { data: breeds, isLoading, isError, error } = useFetchBreeds();
+  const { data: data, isLoading, isError, error } = useFetchBreeds();
 
   if (isLoading) return <p>Loading breeds...</p>;
   if (isError) return <p>Error loading breeds: {error?.message}</p>;
-  
-console.log(breeds);
+  if (data == null) return <div>No Breeds Found</div>
+  console.log(data)
+
 
   return (
     <div className="">
@@ -25,7 +26,7 @@ console.log(breeds);
         </SelectTrigger>
       <SelectContent>
         <SelectGroup>
-          {breeds?.map((breed: string, index: number) => (
+          {data.map((breed: string, index: number) => (
             <SelectItem key={index} value={breed}>
               {breed}
             </SelectItem>
