@@ -14,8 +14,6 @@ export const useFetchDogs = (params: FetchDogsProps) => {
     queryKey: ['dogIds', params],
     queryFn: () => fetchDogIds(params),
     placeholderData: { resultIds: [], total: 0 },
-    staleTime: 5 * 60 * 1000,
-    retry: 2,
   });
 
   const dogIds = dogIdData?.resultIds ?? [];

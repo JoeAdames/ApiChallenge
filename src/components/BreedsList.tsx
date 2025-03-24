@@ -14,23 +14,23 @@ export default function BreedList({ selectedBreed, onSelectBreed}: BreedListProp
 
   if (isLoading) return <p>Loading breeds...</p>;
   if (isError) return <p>Error loading breeds: {error?.message}</p>;
-
-  console.log(breeds)
+  
+console.log(breeds);
 
   return (
     <div className="">
       <Select onValueChange={(e) => onSelectBreed(e)}>
-      <SelectTrigger className="w-[180px]">
-          <SelectValue placeholder={selectedBreed ? selectedBreed : "Select Breed"}/>
-      </SelectTrigger>
+        <SelectTrigger className="w-[180px]">
+            <SelectValue placeholder={selectedBreed ? selectedBreed : "Select Breed"}/>
+        </SelectTrigger>
       <SelectContent>
-      <SelectGroup>
-        {breeds?.map((breed, index) => (
-          <SelectItem key={index} value={breed}>
-            {breed}
-          </SelectItem>
-        ))}
-      </SelectGroup>
+        <SelectGroup>
+          {breeds?.map((breed: string, index: number) => (
+            <SelectItem key={index} value={breed}>
+              {breed}
+            </SelectItem>
+          ))}
+        </SelectGroup>
       </SelectContent>
       </Select>
     </div>

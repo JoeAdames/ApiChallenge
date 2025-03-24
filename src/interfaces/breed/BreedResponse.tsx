@@ -1,3 +1,3 @@
-export type BreedResponse = {
+export default interface BreedResponse {
     breeds: string[];
 }
