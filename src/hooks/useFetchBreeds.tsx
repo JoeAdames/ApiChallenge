@@ -5,6 +5,7 @@ export const useFetchBreeds = () => {
     const { data, isLoading, isError, error } = useQuery<string[]>({
         queryKey: ['breeds'],
         queryFn: async () => {return await fetchBreeds()},
+        // enabled: false
       });
       return { 
         data, isLoading, isError, error

@@ -2,17 +2,25 @@ import { useQuery } from '@tanstack/react-query';
 import { fetchDogIds, fetchDogsByIds } from '../api/dogs';
 import DogSearchResponse from '../interfaces/dog/DogSearchResponse';
 import DogResponse from '../interfaces/dog/DogResponse';
-import FetchDogsProps from '../interfaces/dog/FetchDogsProps';
+import { useFilterStore } from '@/store/filterStore';
 
-export const useFetchDogs = (params: FetchDogsProps) => {
+export const useFetchDogs = () => {
+  const {selectedBreeds, ageMin, ageMax, sortType, sortOrder, from, size} = useFilterStore();
   const { 
     data: dogIdData, 
     isLoading: isDogIdLoading, 
     isError: isDogIdError, 
     error: dogIdError 
   } = useQuery<DogSearchResponse>({
-    queryKey: ['dogIds', params],
-    queryFn: () => fetchDogIds(params),
+    queryKey: ['dogIds', {selectedBreeds, ageMin, sortType, sortOrder, from, size}],
+    queryFn: () => fetchDogIds({
+      breeds: selectedBreeds ? selectedBreeds : [],
+      ageMin,
+      ageMax,
+      sort: `${sortType}:${sortOrder}`,
+      from,
+      size,
+    }),
     placeholderData: { resultIds: [], total: 0 },
   });
 

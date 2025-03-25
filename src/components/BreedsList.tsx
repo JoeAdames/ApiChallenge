@@ -1,39 +1,30 @@
+import { useFilterStore } from '@/store/filterStore';
 import { useFetchBreeds } from '../hooks/useFetchBreeds';
-import BreedListProps from '../interfaces/breed/BreedListProps'
-import {
-  Select,
-  SelectContent,
-  SelectGroup,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select"
+import { Checkbox } from './ui/checkbox';
 
-export default function BreedList({ selectedBreed, onSelectBreed}: BreedListProps) {
+export default function BreedList() {
+  const { toggleBreed } = useFilterStore();
   const { data: data, isLoading, isError, error } = useFetchBreeds();
+
 
   if (isLoading) return <p>Loading breeds...</p>;
   if (isError) return <p>Error loading breeds: {error?.message}</p>;
   if (data == null) return <div>No Breeds Found</div>
-  console.log(data)
-
 
   return (
     <div className="">
-      <Select onValueChange={(e) => onSelectBreed(e)}>
-        <SelectTrigger className="w-[180px]">
-            <SelectValue placeholder={selectedBreed ? selectedBreed : "Select Breed"}/>
-        </SelectTrigger>
-      <SelectContent>
-        <SelectGroup>
+      <h1 className="text-2xl">Breeds</h1>
+    <ul>
           {data.map((breed: string, index: number) => (
-            <SelectItem key={index} value={breed}>
-              {breed}
-            </SelectItem>
+            <li key={index} className="flex flex-row list-none p-1">
+              <Checkbox
+              onCheckedChange={() => toggleBreed(breed)}
+              className="mx-2"
+              />
+              <label>{breed}</label>
+            </li>
           ))}
-        </SelectGroup>
-      </SelectContent>
-      </Select>
+      </ul>
     </div>
   );
 }
