@@ -2,7 +2,7 @@ import { Slider } from '@/components/ui/slider';
 import AgeProps from '@/interfaces/age/AgeProps';
 import DefaultFilterState from '@/interfaces/filters/DefaultFilterState';
 
-export default function AgeSelect({name, ageMax, DV, tempFilters, setTempFilters, currentAge}: AgeProps &
+export default function AgeMinSlider({name, ageMax, DV, tempFilters, setTempFilters, currentAge}: AgeProps &
    {
     tempFilters: DefaultFilterState, 
     setTempFilters: React.Dispatch<React.SetStateAction<DefaultFilterState>>
