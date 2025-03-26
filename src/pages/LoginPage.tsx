@@ -23,8 +23,8 @@ export default function Login() {
 
 
     return (
-        <div>
-            <div className="flex flex-col items-center m-10 justify-evenly content-evenly">
+        <div className='w-full h-100 flex justify-center place-items-center'>
+            <div className="flex flex-col items-center justify-evenly w-50">
             <Input type="text" placeholder="Name" onChange={(e) => setName(e.target.value)} className="m-1"/>
             <Input type="text" placeholder="Email" onChange={(e) => setEmail(e.target.value)} className="m-1"/>
             <Button className="mt-2 text-neutral-100 bg-neutral-950 rounded px-2 cursor-pointer" onClick={handleLogin} >Submit</Button>

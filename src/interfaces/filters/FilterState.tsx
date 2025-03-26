@@ -1,5 +1,5 @@
 export default interface FilterState {
-    selectedBreeds: string[];
+    breeds: string[];
     ageMin?: number;
     ageMax?: number;
     sortType: "breed" | "age" | "name";

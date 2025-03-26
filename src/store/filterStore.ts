@@ -2,7 +2,7 @@ import { create } from 'zustand';
 import FilterState from '@/interfaces/filters/FilterState';
 
 export const useFilterStore = create<FilterState>((set) => ({
-    selectedBreeds: [],
+    breeds: [],
     ageMin: undefined,
     ageMax: undefined,
     sortType: "breed",
@@ -13,13 +13,13 @@ export const useFilterStore = create<FilterState>((set) => ({
     setFilters: (filters) => set((state) => ({ ...state, ...filters})),
     toggleBreed: (breed) =>
       set((state) => ({
-        selectedBreeds: state.selectedBreeds.includes(breed)
-        ? state.selectedBreeds.filter((b) => b !== breed)
-        : [...state.selectedBreeds, breed],
+        breeds: state.breeds.includes(breed)
+        ? state.breeds.filter((b) => b !== breed)
+        : [...state.breeds, breed],
       }
     )),
     resetFilters: ()  => set({
-        selectedBreeds: [],
+        breeds: [],
         ageMin: undefined,
         ageMax: undefined,
         sortType: "breed",

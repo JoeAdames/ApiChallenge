@@ -1,33 +1,22 @@
-import AgeProps from "@/interfaces/age/AgeProps";
-import {
-  Select,
-  SelectContent,
-  SelectGroup,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select"
+import { Slider } from '@/components/ui/slider';
+import AgeProps from '@/interfaces/age/AgeProps';
+import DefaultFilterState from '@/interfaces/filters/DefaultFilterState';
 
-export default function AgeSelect({ selectedAge, onSelectAge, uniqueAges, name}: AgeProps) {
+export default function AgeSelect({name, ageMax, DV, tempFilters, setTempFilters, currentAge}: AgeProps &
+   {
+    tempFilters: DefaultFilterState, 
+    setTempFilters: React.Dispatch<React.SetStateAction<DefaultFilterState>>
+  }) {
 
   return (
-    <>
-        <Select>
-        <SelectTrigger className="w-[180px]">
-          <SelectValue placeholder={name} />
-        </SelectTrigger>
-        <SelectGroup>
-          <SelectContent>
-          {uniqueAges.map((age) => (
-            <SelectItem key={age} value={JSON.stringify(age)}>
-          {age}
-        </SelectItem>
-      ))}
-          </SelectContent>
-        </SelectGroup>
-      </Select>
-    <Select value={JSON.stringify(selectedAge) ?? ''} onValueChange={(e) => onSelectAge(e ? Number(e) : undefined)}>
-    </Select>
-    </>
+    <div className='m-2 p-1'>
+      <label>{name}</label>
+      <div className=" flex flex-row items-center">
+      <Slider onValueChange={(val) =>
+          setTempFilters({ ...tempFilters, ageMin: val[0] })
+        } min={0} max={ageMax} step={1} defaultValue={[DV]} className="text-neutral-200" />
+      <div className="ml-1">{currentAge ??  0}</div>
+      </div>
+    </div>
   );
 }

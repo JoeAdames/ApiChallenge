@@ -5,16 +5,16 @@ import DogResponse from '../interfaces/dog/DogResponse';
 import { useFilterStore } from '@/store/filterStore';
 
 export const useFetchDogs = () => {
-  const {selectedBreeds, ageMin, ageMax, sortType, sortOrder, from, size} = useFilterStore();
+  const {breeds, ageMin, ageMax, sortType, sortOrder, from, size} = useFilterStore();
   const { 
     data: dogIdData, 
     isLoading: isDogIdLoading, 
     isError: isDogIdError, 
     error: dogIdError 
   } = useQuery<DogSearchResponse>({
-    queryKey: ['dogIds', {selectedBreeds, ageMin, sortType, sortOrder, from, size}],
+    queryKey: ['dogIds', {breeds, ageMin, sortType, sortOrder, from, size}],
     queryFn: () => fetchDogIds({
-      breeds: selectedBreeds ? selectedBreeds : [],
+      breeds,
       ageMin,
       ageMax,
       sort: `${sortType}:${sortOrder}`,

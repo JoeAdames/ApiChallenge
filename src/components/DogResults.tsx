@@ -15,6 +15,8 @@ export function DogResults({dogs}: DogResultsProps) {
   const { favorites, toggleFavorite } = useFavoriteStore();
   
   return ( 
+    <div className="flex flex-col">
+    <h1 className="text-2xl">Results</h1>
     <div className="grid grid-cols-2 md:grid-cols-3 gap-4 mt-4 h-full text-center">
         {dogs.length > 0 ? (
           dogs.map((dog) => (
@@ -45,4 +47,5 @@ export function DogResults({dogs}: DogResultsProps) {
           <p className="col-span-3 text-center mt-4">No dogs found for the selected breed.</p>
         )}
       </div>
+    </div>
   )}
