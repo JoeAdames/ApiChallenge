@@ -44,7 +44,7 @@ export default function FavoritesList() {
             ))}
           </ul>
         ) : (
-          <p className="text-gray-500 text-center p-4">Add some favorites!</p>
+          <p className="text-neutral-200 text-center p-4">Add some favorites!</p>
         )}
 
         {favorites.length > 0 && (
