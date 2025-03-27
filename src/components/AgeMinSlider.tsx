@@ -9,13 +9,19 @@ export default function AgeMinSlider({name, ageMax, DV, tempFilters, setTempFilt
   }) {
 
   return (
-    <div className='m-2 p-1'>
-      <label>{name}</label>
-      <div className=" flex flex-row items-center">
-      <Slider onValueChange={(val) =>
-          setTempFilters({ ...tempFilters, ageMin: val[0] })
-        } min={0} max={ageMax} step={1} defaultValue={[DV]} className="text-neutral-200" />
-      <div className="ml-1">{currentAge ??  0}</div>
+    <div className="m-2 p-2 w-full">
+      <label className="block text-sm font-semibold text-gray-300 mb-1">{name}</label>
+      <div className="flex items-center gap-3">
+      <Slider 
+      onValueChange={(val) => setTempFilters({ ...tempFilters, ageMin: val[0] })}
+       min={0}
+       max={ageMax}
+       step={1} 
+       defaultValue={[DV]}  
+       className="text-neutral-200" />
+      <div className="text-sm font-medium text-gray-200">
+        {currentAge ??  0}
+        </div>
       </div>
     </div>
   );
